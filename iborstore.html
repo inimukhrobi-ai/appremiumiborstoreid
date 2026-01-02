@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBOR STORE - Premium Apps Termurah</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #5a52d5;
+            --accent: #00E5FF;
+            --bg-dark: #0f0f11;
+            --bg-card: #18181b;
+            --text-light: #ffffff;
+            --text-gray: #a1a1aa;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --success: #00c851;
+            --danger: #ff4444;
+            --warning: #ffbb33;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            padding-bottom: 80px; /* Space for footer */
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            background: rgba(15, 15, 17, 0.85);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo { font-size: 1.4rem; font-weight: 800; color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-gray); font-size: 0.9rem; transition: 0.3s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+        .wa-btn-nav {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white; padding: 8px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); transition: transform 0.2s;
+        }
+        .wa-btn-nav:hover { transform: scale(1.05); }
+
+        /* --- BANNER SLIDER (NEW) --- */
+        .hero-section { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .swiper { width: 100%; height: 250px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); }
+        .swiper-slide {
+            background-size: cover; background-position: center; display: flex; align-items: center; padding: 0 50px;
+            position: relative;
+        }
+        .swiper-slide::before {
+            content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #000 0%, transparent 100%);
+        }
+        .slide-content { position: relative; z-index: 2; max-width: 500px; }
+        .slide-content h2 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 10px; color: white; }
+        .slide-content p { color: #ddd; margin-bottom: 20px; }
+        .btn-banner { background: var(--primary); color: white; padding: 8px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+        /* --- FLASH SALE BAR --- */
+        .flash-sale-bar {
+            max-width: 1200px; margin: 20px auto; padding: 15px 20px;
+            background: linear-gradient(90deg, #ff4444 0%, #cc0000 100%);
+            border-radius: 12px; display: flex; align-items: center; justify-content: space-between; color: white;
+            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.3);
+        }
+        .fs-title { font-weight: 800; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
+        .fs-timer { font-family: monospace; font-size: 1.2rem; font-weight: 700; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 5px; }
+
+        /* --- SEARCH & TABS --- */
+        .controls-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 20px; }
+        
+        .search-wrapper { position: relative; width: 100%; }
+        .search-wrapper input {
+            width: 100%; padding: 15px 20px 15px 50px; border-radius: 15px; border: 1px solid var(--glass-border);
+            background: var(--bg-card); color: white; outline: none; transition: 0.3s;
+        }
+        .search-wrapper input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(108, 99, 255, 0.2); }
+        .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-gray); }
+
+        .category-tabs { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+        .category-tabs::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            background: var(--bg-card); border: 1px solid var(--glass-border); color: var(--text-gray);
+            padding: 10px 25px; border-radius: 25px; cursor: pointer; transition: 0.3s; white-space: nowrap; font-weight: 500;
+        }
+        .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* --- PRODUCT GRID --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+        .product-card {
+            background: var(--bg-card); border-radius: 16px; padding: 20px; border: 1px solid var(--glass-border);
+            transition: 0.3s; position: relative; display: flex; flex-direction: column;
+        }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px -10px rgba(108, 99, 255, 0.2); }
+
+        /* Badge Best Seller */
+        .badge-best {
+            position: absolute; top: 15px; right: 15px; background: rgba(255, 187, 51, 0.2); color: var(--warning);
+            font-size: 0.7rem; padding: 3px 8px; border-radius: 5px; font-weight: 700; border: 1px solid rgba(255, 187, 51, 0.3);
+        }
+
+        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        
+        /* LOGO STYLING */
+        .logo-wrapper {
+            width: 60px; height: 60px; background: #222; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            padding: 8px; border: 1px solid #333;
+        }
+        .logo-img { width: 100%; height: 100%; object-fit: contain; }
+
+        .app-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+        .app-info .start-price { font-size: 0.8rem; color: var(--text-gray); }
+
+        .price-highlight {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent); margin: 5px 0 15px 0;
+        }
+
+        .feature-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
+        .chip { font-size: 0.75rem; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 5px; color: #ccc; }
+
+        .btn-select {
+            margin-top: auto; width: 100%; padding: 12px; background: transparent; border: 1px solid var(--primary);
+            color: var(--primary); border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.2s;
+        }
+        .btn-select:hover { background: var(--primary); color: white; }
+
+        /* --- FLOATING WA BUTTON --- */
+        .fab-wa {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none; transition: 0.3s; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: 0.3s;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: #1e1e24; width: 90%; max-width: 450px; padding: 25px; border-radius: 20px;
+            border: 1px solid var(--glass-border); transform: translateY(50px); transition: 0.3s;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .form-control { width: 100%; padding: 12px; background: #121212; border: 1px solid #333; border-radius: 10px; color: white; outline: none; margin-bottom: 15px; }
+        .btn-checkout { width: 100%; padding: 14px; background: var(--success); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
+
+        /* --- FOOTER --- */
+        footer { border-top: 1px solid #333; margin-top: 50px; padding: 40px 20px; background: #0a0a0c; font-size: 0.9rem; color: #888; text-align: center; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero-section { padding: 0 10px; margin: 15px auto; }
+            .swiper { height: 180px; border-radius: 15px; }
+            .slide-content h2 { font-size: 1.5rem; }
+            .nav-links { display: none; }
+            .flash-sale-bar { flex-direction: column; text-align: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <i class="fas fa-cube" style="color:var(--primary)"></i> 
+            Ibor<span>Store.</span>
+        </a>
+        <div class="nav-links">
+            <a href="#home" class="active">Beranda</a>
+            <a href="#products">Katalog</a>
+            <a href="#testi">Testimoni</a>
+        </div>
+        <a href="https://wa.me/6285691412921" class="wa-btn-nav">
+            <i class="fab fa-whatsapp"></i> Hubungi Admin
+        </a>
+    </nav>
+
+    <div class="hero-section" id="home">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1000&auto=format&fit=crop');">
+                    <div class="slide-content">
+                        <h2>Netflix Premium <br> <span style="color:var(--primary)">4K UHD Legal</span></h2>
+                        <p>Nonton film tanpa batas, anti on-hold, garansi full durasi.</p>
+                        <a href="#products" class="btn-banner">Beli Sekarang</a>
+                    </div>
+                </div>
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop');">
+                    <div class="slide-content">
+                        <h2>Spotify Premium <br> <span style="color:#1DB954">Anti Iklan</span></h2>
+                        <p>Dengarkan musik favoritmu secara offline dan bebas gangguan.</p>
+                        <a href="#products" class="btn-banner">Lihat Harga</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flash-sale-bar">
+        <div class="fs-title"><i class="fas fa-bolt"></i> FLASH SALE HARI INI!</div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span>Berakhir dalam:</span>
+            <div class="fs-timer" id="countdown">04:59:59</div>
+        </div>
+    </div>
+
+    <div class="controls-container">
+        <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" onkeyup="renderProducts()" placeholder="Cari aplikasi (Contoh: Netflix, Canva...)">
+        </div>
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterCategory('all', this)">🔥 Semua</button>
+            <button class="tab-btn" onclick="filterCategory('video', this)">🎬 Streaming</button>
+            <button class="tab-btn" onclick="filterCategory('music', this)">🎵 Musik</button>
+            <button class="tab-btn" onclick="filterCategory('tools', this)">🛠️ Produktivitas</button>
+            <button class="tab-btn" onclick="filterCategory('game', this)">🎮 Games</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product-grid" id="productGrid">
+            </div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+            <i class="fab fa-instagram" style="font-size: 1.5rem; margin:0 10px;"></i>
+            <i class="fab fa-tiktok" style="font-size: 1.5rem; margin:0 10px;"></i>
+            <i class="fab fa-whatsapp" style="font-size: 1.5rem; margin:0 10px;"></i>
+        </div>
+        <p>&copy; 2025 Ibor Store. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; color: #555;">Melayani Sepenuh Hati, Harga Pas di Kantong.</p>
+    </footer>
+
+    <a href="https://wa.me/6285691412921" class="fab-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                <h3 id="modalTitle">Checkout</h3>
+                <i class="fas fa-times" onclick="closeModal()" style="cursor:pointer; font-size:1.2rem;"></i>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img id="modalImg" src="" style="width: 60px; height: 60px; object-fit: contain; border-radius: 10px;">
+            </div>
+
+            <label style="font-size: 0.9rem; color:#aaa;">Pilih Paket:</label>
+            <select id="packetSelect" class="form-control"></select>
+
+            <label style="font-size: 0.9rem; color:#aaa;">Metode Pembayaran:</label>
+            <select id="paymentSelect" class="form-control">
+                <option>QRIS (OVO/DANA/Gopay)</option>
+                <option>Transfer Seabank </option>
+                <option>DANA Transfer</option>
+                <option>ShopeePay</option>
+            </select>
+            
+            <button class="btn-checkout" onclick="processToWA()">
+                <i class="fab fa-whatsapp"></i> Beli Sekarang
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        // Init Swiper Slider
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+        });
+
+        // Countdown Timer
+        function startTimer(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+        startTimer(18000, document.querySelector('#countdown')); // 5 Jam
+
+        // --- DATA PRODUK (DENGAN LOGO URL ASLI) ---
+        // Menggunakan link logo CDN stabil (Wikimedia/Public Domain)
+        const products = [
+            {
+                id: 1, name: "Netflix", category: "video", best: true,
+                img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+                desc: "Nonton film 4K UHD, Tanpa VPN.",
+                items: [
+                    { type: "Sharing (1P2U)", price: 20000 },
+                    { type: "Sharing (1P1U)", price: 30000 },
+                    { type: "Sharing (1P1U 2DEV)", price: 37000 },
+                    { type: "Private Account", price: 137000 }
+                ]
+            },
+            {
+                id: 2, name: "Spotify", category: "music", best: true,
+                img: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
+                desc: "Premium Family/Individu, Garansi.",
+                items: [
+                    { type: "Individu 1 Bulan", price: 15000 }
+                ]
+            },
+            {
+                id: 3, name: "YouTube Premium", category: "video", best: false,
+                img: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg",
+                desc: "No Ads, Background Play + Music.",
+                items: [
+                    { type: "Individu 1 Bulan", price: 9000 },
+                    { type: "Family 1 Bulan", price: 14000 },
+                    { type: "Invite 7 Hari", price: 10000 }
+                ]
+            },
+            {
+                id: 4, name: "Canva Pro", category: "tools", best: true,
+                img: "https://pin.it/1MqdlT0v0",
+                desc: "Unlock semua template & elemen pro.",
+                items: [
+                    { type: "Invite Team 1 Bulan", price: 2000 },
+                    { type: "Owner Team 1 Tahun", price: 6000 }
+                ]
+            },
+            {
+                id: 5, name: "ChatGPT Plus", category: "tools", best: false,
+                img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+                desc: "Akses GPT-4, DALL-E, dan plugin.",
+                items: [
+                    { type: "Invite Go 1 Tahun", price: 22000 },
+                    { type: "Invite Plus 1 Tahun", price: 22000 },
+                    { type: "Private Bisnis 1 Bulan", price: 32000 }
+                ]
+            },
+            {
+                id: 6, name: "CapCut Pro", category: "tools", best: false,
+                img: "https://share.google/x1NPX6m0BuiqKYvri",
+                desc: "Edit video tanpa watermark, efek pro.",
+                items: [
+                    { type: "Private 7 Hari", price: 7000 },
+                    { type: "Private 1 Bulan (GAR7D )", price: 12000 }
+                ]
+            },
+            {
+                id: 7, name: "Disney+ Hotstar", category: "video", best: false,
+                img: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg",
+                desc: "Film Marvel, Disney, Pixar lengkap.",
+                items: [
+                    { type: "Sharing 1 Bulan", price: 20000 },
+                    { type: "Private 1 Bulan", price: 45000 }
+                ]
+            },
+            {
+                id: 8, name: "Vidio Platinum", category: "video", best: false,
+                img: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Vidio_logo_2022.svg",
+                desc: "Streaming Liga Inggris & BRI Liga 1.",
+                items: [
+                    { type: "Private All Dev 1 Hari", price: 42000 },
+                    { type: "Private Mobile 1 Bulan", price: 32000 }
+                ]
+            },
+            {
+                id: 9, name: "Zoom Pro", category: "tools", best: false,
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Zoom_communications_logo.svg/800px-Zoom_communications_logo.svg.png",
+                desc: "Meeting unlimited > 40 menit, co-host.",
+                items: [
+                    { type: "Pro 7 Hari", price: 9000 },
+                    { type: "Pro 14 Hari", price: 14000 }
+                ]
+            }
+        ];
+
+        let currentCategory = 'all';
+
+        // --- RENDER FUNCTION ---
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            grid.innerHTML = "";
+
+            products.forEach(p => {
+                const matchCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchVal);
+
+                if (matchCat && matchSearch) {
+                    const minPrice = Math.min(...p.items.map(i => i.price));
+                    
+                    // Logic Best Seller Badge
+                    const badgeHtml = p.best ? `<div class="badge-best">TERLARIS</div>` : '';
+
+                    const html = `
+                        <div class="product-card">
+                            ${badgeHtml}
+                            <div class="card-header">
+                                <div class="logo-wrapper">
+                                    <img src="${p.img}" alt="${p.name}" class="logo-img">
+                                </div>
+                                <div class="app-info">
+                                    <h3>${p.name}</h3>
+                                    <div class="start-price">Mulai dari</div>
+                                </div>
+                            </div>
+                            
+                            <div class="price-highlight">Rp${minPrice.toLocaleString('id-ID')}</div>
+                            
+                            <div class="feature-chips">
+                                <span class="chip">Legal</span>
+                                <span class="chip">Garansi</span>
+                                <span class="chip">Full Speed</span>
+                            </div>
+
+                            <p style="font-size:0.85rem; color:#888; margin-bottom:15px; flex-grow:1;">${p.desc}</p>
+
+                            <button class="btn-select" onclick="openCheckout(${p.id})">Beli Sekarang</button>
+                        </div>
+                    `;
+                    grid.innerHTML += html;
+                }
+            });
+        }
+
+        // Filter Category
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts();
+        }
+
+        // --- MODAL LOGIC ---
+        let selectedProduct = null;
+
+        function openCheckout(id) {
+            selectedProduct = products.find(p => p.id === id);
+            const modal = document.getElementById('checkoutModal');
+            
+            document.getElementById('modalTitle').innerText = "Beli " + selectedProduct.name;
+            document.getElementById('modalImg').src = selectedProduct.img;
+            
+            const select = document.getElementById('packetSelect');
+            select.innerHTML = "";
+            selectedProduct.items.forEach(item => {
+                select.innerHTML += `<option value="${item.type}"> ${item.type} - Rp${item.price.toLocaleString('id-ID')} </option>`;
+            });
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        function processToWA() {
+            const packet = document.getElementById('packetSelect').value;
+            const payment = document.getElementById('paymentSelect').value;
+            
+            const text = `Halo Admin Ibor Store, saya mau order:
+=============================
+🛒 Produk : ${selectedProduct.name}
+📦 Paket : ${packet}
+💳 Bayar via : ${payment}
+=============================
+Mohon info nomor pembayaran ya min!`;
+
+            window.open(`https://wa.me/628?text=${encodeURIComponent(text)}`, '_blank');
+            closeModal();
+        }
+
+        // Close modal when click outside
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('checkoutModal')) closeModal();
+        }
+
+        // Init
+        renderProducts();
+    </script>
+</body>
+</html>
